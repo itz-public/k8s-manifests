@@ -1,16 +1,16 @@
 cp4d:
-  - project: cpd
-    openshift_cluster_name: cpd-demo
-    cp4d_version:
+  - project: "${PROJECT_NAME:-cpd}"
+    openshift_cluster_name: "${OPENSHIFT_CLUSTER_NAME:-cpd-demo}"
+    cp4d_version: "${CP4D_VERSION:-}"
     cp4d_entitlement:
-      - cpd-enterprise
-    accept_licenses: True
-    operators_project: cpd-operators
-    state: installed
+      - "${CP4D_ENTITLEMENT:-cpd-enterprise}"
+    accept_licenses: ${ACCEPT_LICENSES:-true}
+    operators_project: "${OPERATORS_PROJECT:-cpd-operators}"
+    state: "${INSTALL_STATE:-installed}"
     cartridges:
-      - name: cpfs
+      - name: "${CARTRIDGE1_NAME:-cpfs}"
         license_service:
-          state: disabled
-      - name: cpd_platform
-      - name: scheduler
-        state: disabled
+          state: "${CARTRIDGE1_LICENSE_STATE:-disabled}"
+      - name: "${CARTRIDGE2_NAME:-cpd_platform}"
+      - name: "${CARTRIDGE3_NAME:-scheduler}"
+        state: "${CARTRIDGE3_STATE:-disabled}"
