@@ -1,16 +1,315 @@
+global_config:
+  environment_name: demo
+  cloud_platform: existing-ocp
+  confirm_destroy:
+openshift:
+  - name: cpd-demo
+    ocp_version:
+    cluster_name: cpd-demo
+    domain_name: example.com
+    openshift_ai:
+      install:
+      channel: fast
+    gpu:
+      install:
+    openshift_storage:
+      - storage_name:
+        storage_type:
 cp4d:
-  - project: cpdAdd commentMore actions
+  - project: cpd
     openshift_cluster_name: cpd-demo
     cp4d_version:
     cp4d_entitlement:
       - cpd-enterprise
+    use_fs_iam:
     accept_licenses: True
     operators_project: cpd-operators
     state: installed
     cartridges:
-      - name: cpfs
+      - name: cp-foundation
         license_service:
           state: disabled
-      - name: cpd_platform
+          threads_per_core: 2
+      - name: lite
       - name: scheduler
-        state: disabled
+        state: removed
+      - name: analyticsengine
+        description: Analytics Engine Powered by Apache Spark
+        size:
+        state: removed
+      - name: bigsql
+        description: Db2 Big SQL
+        state: removed
+      - name: ca
+        description: Cognos Analytics
+        size:
+        state: removed
+      - name: dashboard
+        description: Cognos Dashboards
+        state: removed
+      - name: datagate
+        description: Db2 Data Gate
+        state: removed
+      - name: datalineage
+        description: IBM MANTA Data Lineage
+        size: small
+        state: removed
+      - name: dataproduct
+        description: Data Product Hub
+        state: removed
+      - name: datastage-ent
+        description: DataStage Enterprise
+        state: removed
+      - name: datastage-ent-plus
+        description: DataStage Enterprise Plus
+        state: removed
+      - name: db2
+        description: Db2 OLTP
+        size:
+        state: removed
+      - name: db2wh
+        description: Db2 Warehouse
+        state: removed
+      - name: dmc
+        description: Db2 Data Management Console
+        state: removed
+      - name: dods
+        description: Decision Optimization
+        size:
+        state: removed
+      - name: dp
+        description: Data Privacy
+        size:
+        state: removed
+      - name: dpra
+        description: Data Privacy Risk Assessment
+        state: removed
+      - name: dv
+        description: Data Virtualization
+        size:
+        state: removed
+      - name: edb_cp4d
+        description: EDB Postgres
+        state: removed
+      - name: factsheet
+        description: AI Factsheets
+        size:
+        state: removed
+      - name: hee
+        description: Execution Engine for Apache Hadoop
+        size:
+        state: removed
+      - name: mantaflow
+        description: MANTA Automated Lineage
+        size:
+        state: removed
+      - name: match360
+        description: IBM Match 360
+        size:
+        wkc_enabled:
+        state: removed
+      - name: mongodb
+        description: MongoDB for Cloud Pak for Data
+        state: removed
+      - name: openpages
+        description: OpenPages
+        state: removed
+      - name: planning-analytics
+        description: Planning Analytics
+        state: removed
+      - name: replication
+        description: Data Replication
+        license: IDRC
+        size:
+        state: removed
+      - name: rstudio
+        description: RStudio Server with R 3.6
+        size:
+        state: removed
+      - name: spss
+        description: SPSS Modeler
+        state: removed
+      - name: syntheticdata
+        description: Synthetic Data Generator
+        state: removed
+      - name: voice-gateway
+        description: Voice Gateway
+        replicas:
+        state: removed
+      - name: watson-assistant
+        description: Watsonx Assistant
+        size:
+        state: removed
+      - name: watson-discovery
+        description: Watson Discovery
+        state: removed
+      - name: watson-openscale
+        description: Watson OpenScale
+        size:
+        state: removed
+      - name: watson-speech
+        description: Watson Speech (STT and TTS)
+        stt_size:
+        tts_size:
+        state: removed
+      - name: watsonx_ai
+        description: watsonx.ai
+        state: removed
+        installation_options:
+          tuning_disabled: true
+        models:
+          - model_id: allam-1-13b-instruct
+            state: removed
+          - model_id: codellama-codellama-34b-instruct-hf
+            state: removed
+          - model_id: elyza-japanese-llama-2-7b-instruct
+            state: removed
+          - model_id: google-flan-ul2
+            state: removed
+          - model_id: google-flan-t5-xl
+            state: removed
+          - model_id: google-flan-t5-xxl
+            state: removed
+          - model_id: ibm-granite-7b-lab
+            state: removed
+          - model_id: ibm-granite-8b-japanese
+            state: removed
+          - model_id: ibm-granite-13b-chat-v2
+            state: removed
+          - model_id: ibm-granite-13b-instruct-v2
+            state: removed
+          - model_id: ibm-granite-20b-multilingual
+            state: removed
+          - model_id: granite-3-2b-instruct
+            state: removed
+          - model_id: granite-3-8b-instruct
+            state: removed
+          - model_id: granite-guardian-3-2b-instruct
+            state: removed
+          - model_id: granite-guardian-3-8b-instruct
+            state: removed
+          - model_id: granite-3b-code-instruct
+            state: removed
+          - model_id: granite-8b-code-instruct
+            state: removed
+          - model_id: granite-20b-code-instruct
+            state: removed
+          - model_id: granite-34b-code-instruct
+            state: removed
+          - model_id: core42-jais-13b-chat
+            state: removed
+          - model_id: llama-3-2-1b-instruct
+            state: removed
+          - model_id: llama-3-2-3b-instruct
+            state: removed
+          - model_id: llama-3-2-11b-vision-instruct
+            state: removed
+          - model_id: llama-3-2-90b-vision-instruct
+            state: removed
+          - model_id: llama-guard-3-11b-vision
+            state: removed
+          - model_id: llama-3-1-8b-instruct
+            state: removed
+          - model_id: llama-3-1-70b-instruct
+            state: removed
+          - model_id: llama-3-405b-instruct
+            state: removed
+          - model_id: meta-llama-llama-3-8b-instruct
+            state: removed
+          - model_id: meta-llama-llama-3-70b-instruct
+            state: removed
+          - model_id: meta-llama-llama-2-13b-chat
+            state: removed
+          - model_id: mncai-llama-2-13b-dpo-v7
+            state: removed
+          - model_id: ministral-8b-instruct
+            state: removed
+          - model_id: mistral-small-instruct
+            state: removed
+          - model_id: mistral-large
+            state: removed
+          - model_id: mistralai-mixtral-8x7b-instruct-v01
+            state: removed
+          - model_id: bigscience-mt0-xxl
+            state: removed
+          - model_id: pixtral-12b
+            state: removed
+          - model_id: all-minilm-l6-v2
+            state: removed
+          - model_id: all-minilm-l12-v2
+            state: removed
+          - model_id: ms-marco-minilm-l-12-v2
+            state: removed
+          - model_id: multilingual-e5-large
+            state: removed
+          - model_id: ibm-slate-30m-english-rtrvr
+            state: removed
+          - model_id: ibm-slate-125m-english-rtrvr
+            state: removed
+      - name: watsonx_data
+        description: watsonx.data
+        state: removed
+      - name: watsonx_governance
+        description: watsonx.governance
+        state: removed
+        installation_options:
+          installType:
+          enableFactsheet:
+          enableOpenpages:
+          enableOpenscale:
+      - name: watsonx_orchestrate
+        description: watsonx.orchestrate
+        app_connect:
+          app_connect_project: ibm-app-connect
+          app_connect_case_version: 12.5.0
+          app_connect_channel_version: v12.5
+        state: removed
+      - name: wca-ansible
+        description: watsxonx Code Assistant for Red Hat Ansible Lightspeed
+        state: removed
+      - name: wca-z
+        description: watsxonx Code Assistant for Z
+        state: removed
+      - name: wkc
+        description: IBM Knowledge Catalog
+        size:
+        state: removed
+        installation_options:
+          enableKnowledgeGraph:
+          enableDataQuality:
+      - name: ikc_premium
+        description: IBM Knowledge Catalog - Premium edition
+        size:
+        state: removed
+        installation_options:
+          enableKnowledgeGraph:
+          enableDataQuality:
+      - name: ikc_standard
+        description: IBM Knowledge Catalog - Standard edition
+        size:
+        state: removed
+        installation_options:
+          enableKnowledgeGraph:
+          enableDataQuality:
+      - name: wml
+        description: Watson Machine Learning
+        size:
+        state: removed
+      - name: wml-accelerator
+        description: Watson Machine Learning Accelerator
+        replicas:
+        size:
+        state: removed
+      - name: ws
+        description: Watson Studio
+        state: removed
+      - name: ws-pipelines
+        description: Watson Studio Pipelines
+        state: removed
+      - name: ws-runtimes
+        description: Watson Studio Runtimes
+        runtimes:
+          - ibm-cpd-ws-runtime-241-py
+          - ibm-cpd-ws-runtime-241-pygpu
+          - ibm-cpd-ws-runtime-241-r
+        state: removed
