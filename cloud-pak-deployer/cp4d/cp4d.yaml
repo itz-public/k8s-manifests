@@ -4,17 +4,19 @@ global_config:
   confirm_destroy:
 openshift:
   - name: cpd-demo
-    ocp_version:
+    ocp_version: 4.16
     cluster_name: cpd-demo
     domain_name: example.com
     openshift_ai:
-      install:
+      install: False
       channel: fast
     gpu:
-      install:
+      install: False
     openshift_storage:
-      - storage_name:
-        storage_type:
+      - storage_name: custom
+        storage_type: custom
+        ocp_storage_class_file: ocs-external-storagecluster-cephfs
+        ocp_storage_class_block: ocs-external-storagecluster-ceph-rbd
 cp4d:
   - project: cpd
     openshift_cluster_name: cpd-demo
