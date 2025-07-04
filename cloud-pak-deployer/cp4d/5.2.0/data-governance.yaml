@@ -30,6 +30,10 @@ cp4d:
       - name: dashboard
         description: Cognos Dashboards
         state: installed
+      - name: datalineage
+        description: IBM Manta Data Lineage
+        size: small
+        state: installed
       - name: datastage-ent-plus
         description: Datastage Enterprise Plus
         state: installed
@@ -52,10 +56,6 @@ cp4d:
       - name: dataproduct
         description: Data Product Hub
         state: installed
-      - name: mantaflow
-        description: MANTA Automated lineage
-        size: small
-        state: installed
       - name: wkc
         description: IBM Knowledge Catalog
         size: small
@@ -64,3 +64,6 @@ cp4d:
           enableKnowledgeGraph: true
           enableDataQuality: true
           useFDB: true
+      - name: ws
+        description: Watson Studio
+        state: installed
