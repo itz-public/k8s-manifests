@@ -3,6 +3,9 @@ global_config:
   cloud_platform: existing-ocp
 openshift:
   - name: cpd-demo
+    openshift_ai:
+      install: True
+      channel: fast
     openshift_storage:
       - storage_name: ocs-external-storagecluster-cephfs
         storage_type: custom
