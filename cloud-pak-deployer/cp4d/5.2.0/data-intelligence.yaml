@@ -18,6 +18,7 @@ cp4d:
     cp4d_entitlement:
       - cpd-enterprise
     accept_licenses: true
+    use_fs_iam: False
     operators_project: cpd-operators
     state: installed
     cartridges:
